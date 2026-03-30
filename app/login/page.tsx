@@ -10,25 +10,40 @@ export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    const handleSubmit = (e: React.SubmitEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
+        setLoading(true);
 
         if (!email || !password) {
             setError("Please enter your email and password.");
+            setLoading(false);
             return;
         }
 
-        const user = validateLogin(email, password);
+        try {
+            const response = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
 
-        if (!user) {
-            setError("Invalid email or password. Please try again.");
-            return;
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Invalid email or password");
+            }
+
+            // In a real app, you'd store the user in a context/state management
+            router.push(`/dashboard?userId=${data.id}`);
+        } catch (err: any) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
         }
-
-        router.push(`/dashboard?userId=${user.id}`);
     };
 
     return (
@@ -49,13 +64,14 @@ export default function LoginPage() {
                         </p>
                     </div>
 
-                    <div className={"mt-5 xl:mt-9"}>
-                        <form
-                            onSubmit={handleSubmit}
-                            className={
-                                "grid mt-5 mb-2 space-y-3.5 xl:mt-9 xl:mb-6 xl:space-y-8"
-                            }
-                        >
+                            <div className={"mt-5 xl:mt-9"}>
+                                {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+                                <form
+                                    onSubmit={handleSubmit}
+                                    className={
+                                        "grid mt-5 mb-2 space-y-3.5 xl:mt-9 xl:mb-6 xl:space-y-8"
+                                    }
+                                >
                             <div>
                                 <label
                                     className={"text-p1 text-sm xl:text-[16px] leading-none"}
@@ -107,11 +123,12 @@ export default function LoginPage() {
 
                             <button
                                 type="submit"
+                                disabled={loading}
                                 className={
-                                    "mt-2 xl:mt-8 rounded-lg border py-4 px-8 bg-primary text-white font-semibold text-sm leading-5 w-fit hover:bg-primary/90 transition-colors"
+                                    "mt-2 xl:mt-8 rounded-lg border py-4 px-8 bg-primary text-white font-semibold text-sm leading-5 w-fit hover:bg-primary/90 transition-colors disabled:opacity-50"
                                 }
                             >
-                                Login
+                                {loading ? "Logging in..." : "Login"}
                             </button>
                         </form>
 

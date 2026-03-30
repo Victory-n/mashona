@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String     @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String     @unique
+  password  String
+  phone     String?
+  wallet    Wallet?
+  shipments Shipment[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Wallet {
+  id       String @id @default(cuid())
+  balance  Float  @default(0.0)
+  currency String @default("NGN")
+  userId   String @unique
+  user     User   @relation(fields: [userId], references: [id])
+}
+
+model Shipment {
+  id                String   @id @default(cuid())
+  trackingId        String   @unique
+  sender            String
+  receiver          String
+  pickupFrom        String
+  pickupIsNigeria   Boolean  @default(true)
+  deliveryTo        String
+  deliveryIsNigeria Boolean  @default(false)
+  amount            String
+  status            String   @default("Pending")
+  processingTime    String?
+  isPaid            Boolean  @default(false)
+  userId            String
+  user              User     @relation(fields: [userId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
