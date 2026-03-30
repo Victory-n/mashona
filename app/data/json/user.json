@@ -1,0 +1,26 @@
+[
+  {
+    "id": "user_1",
+    "firstName": "Bunmi",
+    "lastName": "Tanny",
+    "email": "bunmi@myafrimall.com",
+    "password": "bunmi123",
+    "phone": "08012345678"
+  },
+  {
+    "id": "user_2",
+    "firstName": "Mercy",
+    "lastName": "Johnson",
+    "email": "mercy@myafrimall.com",
+    "password": "mercy123",
+    "phone": "08087654321"
+  },
+  {
+    "id": "user_3",
+    "firstName": "Tunde",
+    "lastName": "Adeleke",
+    "email": "tunde@myafrimall.com",
+    "password": "tunde123",
+    "phone": "08034567890"
+  }
+]
