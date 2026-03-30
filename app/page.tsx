@@ -1,65 +1,77 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Image from "next/image";
+import { useState } from "react";
+import { Eye, EyeOff, ChevronDown } from "lucide-react";
+
+export default function RegistrationPage() {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="flex min-h-screen font-dmSans">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-16 bg-white">
+          <div className={"xl:pl-12.5"}>
+              <div>
+                  <h1 className={"font-bold text-3xl xl:text-[32px] leading-none"}>Create an account</h1>
+                  <p className={"text-p2 text-sm leading-5.5"}>Sign up for Myafrimall and gain unlimited access to shipping to over 300 countries from Nigeria. Do you already have an account? <strong className={"text-primary underline"}><a href={"/login"}>Login</a></strong></p>
+              </div>
+              <div className={"mt-5 xl:mt-9"}>
+                  <form className={"grid mt-5 mb-2 space-y-3.5 xl:mt-9 xl:mb-6 xl:space-y-8"}>
+                      <div className={"flex"}>
+                          <div className={""}>
+                              <label className={"text-p1 text-sm xl:text-[16px] leading-none"}>First name</label>
+                              <input placeholder={"John"} type={"text"} className={"mt-2 px-4 w-auto py-2 xl:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 placeholder:text-placeholder placeholder:text-sm xl:placeholder:text-[16px] focus:ring-primary/20 focus:border-primary transition-all"} />
+                          </div>
+                          <div className={""}>
+                              <label className={"text-p1 text-sm xl:text-[16px] leading-none"}>Last name</label>
+                              <input placeholder={"Doe"} type={"text"} className={"mt-2 px-4 w-full py-2 xl:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 placeholder:text-placeholder placeholder:text-sm xl:placeholder:text-[16px] focus:ring-primary/20 focus:border-primary transition-all"} />
+                          </div>
+                      </div>
+                      <div>
+                          <label className={"text-p1 text-sm xl:text-[16px] leading-none"}>Email</label>
+                          <input placeholder={"user@example.com"} type={"email"} className={"mt-2 px-4 w-full py-2 xl:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 placeholder:text-placeholder placeholder:text-sm xl:placeholder:text-[16px] focus:ring-primary/20 focus:border-primary transition-all"} />
+                      </div>
+                      <div>
+                          <label className={"text-p1 text-sm xl:text-[16px] leading-none"}>Phone Number</label>
+                          <div className={"flex border border-gray-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary transition-all"}>
+                              <div className={"flex items-center px-3 bg-white border-r border-gray-300 cursor-pointer hover:bg-gray-50"}>
+                                  <span className={"text-sm text-placeholder"}>+234</span>
+                                  <ChevronDown className={"w-4 h-4 ml-1 text-gray-400"} />
+                              </div>
+                              <input
+                                  type="tel"
+                                  placeholder="8012345678"
+                                  className={"w-full px-4 py-2 focus:outline-none placeholder:text-placeholder placeholder:text-sm xl:placeholder:text-[16px]"}
+                              />
+                          </div>
+                      </div>
+                      <div>
+                          <label className={"text-p1 text-sm xl:text-[16px] leading-none"}>Password</label>
+                          <div className={"relative"}>
+                              <input type={showPassword ? "text" : "password"} placeholder="Enter Password" className={"w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 placeholder:text-placeholder placeholder:text-sm xl:placeholder:text-[16px] focus:ring-primary/20 focus:border-primary transition-all pr-10"}
+                              />
+                              <button type="button" onClick={() => setShowPassword(!showPassword)}
+                                  className={"absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"}>
+                                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                              </button>
+                          </div>
+                      </div>
+
+                      <button type="submit" className={"mt-2 xl:mt-8 rounded-lg border py-4 px-8 bg-primary text-white font-semibold text-sm leading-5 w-fit"}>
+                          Create account
+                      </button>
+                  </form>
+                  <p className={"text-sm leading-5.5"}>By clicking on create account you agree to our <strong><a className={"underline text-primary"}>privacy <br /> policy</a></strong> and <strong><a className={"underline text-primary"}>terms of use</a></strong></p>
+              </div>
+          </div>
+      </div>
+      <div className="hidden xl:pb-39.5 xl:pl-17.25 lg:flex w-1/2 bg-[url(/img/dotted-map.png)] bg-cover items-end">
+          <div className={"block text-white"}>
+              <p className={"font-semibold text-lg xl:text-2xl leading-8.75"}>Seamlessly Delivering to Over 300 <br /> Countries from Nigeria! </p>
+              <p className={"text-sm xl:text-lg leading-7.5 font-normal"}>Access global markets with our quick shipping from Nigeria! Fast <br /> delivery and easy customs to 300+ countries.</p>
+          </div>
+      </div>
     </div>
   );
 }
+
