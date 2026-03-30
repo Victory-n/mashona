@@ -25,7 +25,7 @@ export async function POST(request: Request) {
         wallet: {
           create: {
             balance: 0.0,
-            currency: "NGN",
+            currency: "NGN" ,
           },
         },
       },
