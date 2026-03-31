@@ -4,15 +4,15 @@ import overviewData from "@/app/data/json/overview-stats.json";
 import type { Wallet, Shipment, OverviewStats } from "@/app/types";
 
 export function getWallet(userId: string): Wallet | null {
-    return (walletData as Wallet[]).find((w) => w.userId === userId) ?? null;
+    return (walletData as Wallet[])[0] ?? null;
 }
 
 export function getShipments(userId: string): Shipment[] {
-    return (shipmentsData as Shipment[]).filter((s) => s.userId === userId);
+    return (shipmentsData as Shipment[]);
 }
 
 export function getOverviewStats(userId: string): OverviewStats | null {
-    return (overviewData as OverviewStats[]).find((o) => o.userId === userId) ?? null;
+    return (overviewData as OverviewStats[])[0] ?? null;
 }
 
 export function formatBalance(amount: number): string {

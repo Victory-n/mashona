@@ -1,17 +1,6 @@
 [
   {
-    "userId": "user_1",
     "balance": 3000000.28,
-    "currency": "NGN"
-  },
-  {
-    "userId": "user_2",
-    "balance": 1500000.50,
-    "currency": "NGN"
-  },
-  {
-    "userId": "user_3",
-    "balance": 750000.00,
     "currency": "NGN"
   }
 ]

@@ -1,6 +1,5 @@
 [
   {
-    "userId": "user_1",
     "totalShipment": {
       "count": 34,
       "percentageChange": 90,
@@ -20,46 +19,4 @@
       "vsLastMonth": 1
     }
   },
-  {
-    "userId": "user_2",
-    "totalShipment": {
-      "count": 18,
-      "percentageChange": 45,
-      "trend": "up",
-      "vsLastMonth": 3
-    },
-    "totalExports": {
-      "count": 10,
-      "percentageChange": 55,
-      "trend": "up",
-      "vsLastMonth": 2
-    },
-    "totalImports": {
-      "count": 8,
-      "percentageChange": 30,
-      "trend": "down",
-      "vsLastMonth": 1
-    }
-  },
-  {
-    "userId": "user_3",
-    "totalShipment": {
-      "count": 9,
-      "percentageChange": 20,
-      "trend": "up",
-      "vsLastMonth": 1
-    },
-    "totalExports": {
-      "count": 5,
-      "percentageChange": 25,
-      "trend": "up",
-      "vsLastMonth": 1
-    },
-    "totalImports": {
-      "count": 4,
-      "percentageChange": 15,
-      "trend": "down",
-      "vsLastMonth": 0
-    }
-  }
 ]
